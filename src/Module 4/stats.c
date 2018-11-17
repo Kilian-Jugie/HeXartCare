@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void _dispFileData(Data * d, int n) {
-	printf("Pusation nb %d at time %d\n", d->pulsenb, d->time);
+	printf("Il y a eu %d pulsation(s) a la seconde numero %d\n", d->pulsenb, d->time);
 	if (!n) {
 		return;
 	}
@@ -13,9 +13,12 @@ void _dispFileData(Data * d, int n) {
 
 void swap(Data *a, Data *b)
 {
-	int temp = a->pulsenb;
+	int tempPulse = a->pulsenb;
+	int tempTime = a->time;
 	a->pulsenb = b->pulsenb;
-	b->pulsenb = temp;
+	a->time = b->time;
+	b->pulsenb = tempPulse;
+	b->time = tempTime;
 }
 
 void dispFileData(CSVfile * d) {
@@ -23,16 +26,11 @@ void dispFileData(CSVfile * d) {
 }
 
 CSVfile* sortMax(CSVfile * d, int comparatorMode) {
-	int swapped, i;
+	int swapped;
 	Data *ptr1;
 	Data *lptr = NULL;
 	if (d == NULL)
-		return;
-	/*Data newD;
-	newD.pulsenb = INT_MAX - 1;
-	newD.time = INT_MAX - 1;
-	newD.nxt = NULL;
-	accessdata(d->size-1, d->data)->nxt = &newD;*/
+		return d;
 	do
 	{
 		swapped = 0;
@@ -52,22 +50,15 @@ CSVfile* sortMax(CSVfile * d, int comparatorMode) {
 		}
 		lptr = ptr1;
 	} while (swapped);
-	//accessdata(d->size - 1, d->data)->nxt = NULL;
-	//d->size--;
 	return d;
 }
 
 CSVfile* sortMin(CSVfile * d, int comparatorMode) {
-	int swapped, i;
+	int swapped;
 	Data *ptr1;
 	Data *lptr = NULL;
 	if (d == NULL)
-		return;
-	/*Data newD;
-	newD.pulsenb = 0;
-	newD.time =0;
-	newD.nxt = NULL;
-	accessdata(d->size - 1, d->data)->nxt = &newD;*/
+		return d;
 	do
 	{
 		swapped = 0;
@@ -87,8 +78,6 @@ CSVfile* sortMin(CSVfile * d, int comparatorMode) {
 		}
 		lptr = ptr1;
 	} while (swapped);
-	//accessdata(d->size - 1, d->data)->nxt = NULL;
-	//d->size--;
 	return d;
 }
 
@@ -116,7 +105,7 @@ int _getAverageOnTimePeriod(Data* d, int tmin, int tmax, int n, int ct, int size
 		ct += d->pulsenb;
 		size++;
 	}
-	_getAverageOnTimePeriod(d->nxt, tmin, tmax, n - 1, ct, size);
+	return _getAverageOnTimePeriod(d->nxt, tmin, tmax, n - 1, ct, size);
 }
 
 int getAverageOnTimePeriod(CSVfile * f, int tmin, int tmax) {

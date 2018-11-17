@@ -47,7 +47,7 @@ void menu(struct CSVfile* f) {
 			while (choice != 0 && choice != 1) {
 				printf("\nTrier les donnees en fonction de quel parametre ?\n");
 				printf("\t0> Le temps\n");
-				printf("\t1> La valeur de la doonee\n");
+				printf("\t1> La valeur de la donnee\n");
 				scanf("%d", &choice);
 			}
 			sortMax(f, choice);
@@ -59,7 +59,7 @@ void menu(struct CSVfile* f) {
 			while (choice != 0 && choice != 1) {
 				printf("\nTrier les donnees en fonction de quel parametre ?\n");
 				printf("\t0> Le temps\n");
-				printf("\t1> La valeur de la doonee\n");
+				printf("\t1> La valeur de la donnee\n");
 				scanf("%d", &choice);
 			}
 			sortMin(f, choice);
@@ -71,7 +71,7 @@ void menu(struct CSVfile* f) {
 			while (tmin <= 0 || tmax <= 0) {
 				printf("\nEntrez le temps minimum\n");
 				scanf("%d", &tmin);
-				printf("Entrez le temps mamimum\n");
+				printf("Entrez le temps maximum\n");
 				scanf("%d", &tmax);
 			}
 			printf("\n");
@@ -84,7 +84,7 @@ void menu(struct CSVfile* f) {
 			while (tmin <= 0 || tmax <= 0) {
 				printf("\nEntrez le temps minimum\n");
 				scanf("%d", &tmin);
-				printf("Entrez le temps mamimum\n");
+				printf("Entrez le temps maximum\n");
 				scanf("%d", &tmax);
 			}
 			printf("%d\n", getAverageOnTimePeriod(f, tmin, tmax));
