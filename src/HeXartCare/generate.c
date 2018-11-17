@@ -18,6 +18,3 @@ void generateParam (int choice)
     fclose(f);
 
 }
-
-
-void mod1();
