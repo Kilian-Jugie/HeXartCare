@@ -16,7 +16,7 @@ void menu(struct CSVfile* f) {
 		printf("5> Rechercher et afficher les donnees pour un temps particulier\n");
 		printf("6> Afficher la moyenne de pouls dans une plage de temps donnee\n");
 		printf("7> Afficher le nombre de lignes de donnees actuellement en memoire\n");
-		printf("8> Rechercher et afficher les max/min de pouls (avecle temps associe)\n");
+		printf("8> Rechercher et afficher les max/min de pouls\n");
 		printf("9> Sortir du menu\n");
 		printf("10> Sortir du programme\n");
 		scanf("%d", &choicemenu);
